@@ -6,4 +6,5 @@
 !gradlew
 !gradlew.bat
 !.gitignore
+!README.md
 /src/test/
