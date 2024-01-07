@@ -1,0 +1,12 @@
+[
+  {
+    "modid": "tcs_pittools",
+    "name": "TCsPitTools",
+    "description": "Tcmanna's the Pit Tools",
+    "version": "1.0",
+    "mcversion": "1.8.9",
+    "url": "https://github.com/TCmanna/",
+    "authorList": ["TCmanna"],
+    "credits": "TCmanna"
+  }
+]

@@ -1,8 +1,9 @@
 /*
 !/gradle/
 !/libs/
-!/src/main/**
+!/src/
 !build.gradle
 !gradlew
 !gradlew.bat
 !.gitignore
+/src/test/

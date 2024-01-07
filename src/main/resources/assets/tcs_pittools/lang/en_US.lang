@@ -1,0 +1,35 @@
+tcpt.gui=TCsPitTools
+tcpt.event.gui=Show Event Settings
+tcpt.gold.gui=Get Player Gold Settings
+
+tcpt.event.enable=Enable Show
+tcpt.event.max=Max Show Event
+tcpt.event.sort=Reverseorder Sort
+tcpt.event.shadow=Drop shadow
+tcpt.event.pos=Show Position
+
+tcpt.event.enable.tooltip=Enable in-game display of events.
+tcpt.event.max.tooltip=Setting the maximum number of event lines to display.
+tcpt.event.sort.tooltip=Reverse order sort to display.
+tcpt.event.shadow.tooltip=Drawing text shadows.
+tcpt.event.pos.tooltip=Saved display Position.
+
+tcpt.gold.ci=Once Count
+tcpt.gold.cidelay=Once Delay
+tcpt.gold.dadelay=Single Delay
+tcpt.gold.ignore=Ignore Level
+
+tcpt.gold.ci.tooltip=Setting the number of inquiries per round.
+tcpt.gold.cidelay.tooltip=Setting the delay between rounds.
+tcpt.gold.dadelay.tooltip=Setting the single interval delay.
+tcpt.gold.ignore.tooltip=Set to ignore P0 players below this level.
+
+tcpt.button.editpos=Edit Event Pos
+tcpt.button.resetpos=Reset Position
+tcpt.button.confirm=Confirm Save
+
+tcpt.tooltips.nonce=Nonce
+tcpt.tooltips.requires= Requires
+tcpt.tooltips.pants=Pants
+tcpt.tooltips.press=Press
+tcpt.tooltips.showmore=key to show more
