@@ -3,6 +3,10 @@ package com.tcmanna.TCsPitTools.inGameEvent;
 import com.tcmanna.TCsPitTools.TCsPitTools;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -31,8 +35,10 @@ public class PitEventHUD {
     @SubscribeEvent
     public void a(TickEvent.RenderTickEvent ev) {
         if (ev.phase == TickEvent.Phase.END && mc.thePlayer != null) {
-            if (mc.currentScreen != null || mc.gameSettings.showDebugInfo) {
-                return;
+            if (!(mc.currentScreen instanceof GuiChat)) {
+                if (mc.currentScreen != null || mc.gameSettings.showDebugInfo) {
+                    return;
+                }
             }
 
             long currentTimestamp = System.currentTimeMillis();
@@ -87,26 +93,35 @@ public class PitEventHUD {
             PositionMode positionMode = PitEventHUD.positionMode;
             if (positionMode == null)
                 break;
+            long lastTime = event.getTimestamp() - currentTimestamp;
             switch (positionMode) {
                 //右侧
                 case UPRIGHT:
                 case DOWNRIGHT: {
                     String showString = event.getEvent() + " - " + calculateCountdown(event.getTimestamp(), currentTimestamp);
-
-                    int showX = hudX + (textBoxWidth - mc.fontRendererObj.getStringWidth(showString));
+                    int startX = hudX + (textBoxWidth - mc.fontRendererObj.getStringWidth(showString));
 
                     //last60s
-                    if (event.getTimestamp() - currentTimestamp < 60000) {
+                    if (lastTime < 60000) {
                         Color color = event.getColor();
                         int colorRGB = new Color(color.getRed(), color.getGreen(), color.getBlue(), loopColorAlpha(currentTimestamp)).getRGB();
+                        int endX = hudX + textBoxWidth;
                         Gui.drawRect(
-                                showX - 1,
+                                startX - 1,
                                 y - 1,
-                                hudX + textBoxWidth + 1,
+                                endX + 1,
                                 y + mc.fontRendererObj.FONT_HEIGHT,
                                 colorRGB
                         );
-                        mc.fontRendererObj.drawString(showString, (float) showX, (float) y, new Color(0xFFFFFF).getRGB(), TCsPitTools.config_event_dropShadow);
+                        int distance = endX - startX;
+                        drawRectDouble(
+                                startX + (distance - (distance * ((double)lastTime/(double)60000))),
+                                y + mc.fontRendererObj.FONT_HEIGHT - 1,
+                                endX + 1,
+                                y + mc.fontRendererObj.FONT_HEIGHT,
+                                0xFFFFFFFF
+                        );
+                        mc.fontRendererObj.drawString(showString, (float) startX, (float) y, new Color(0xFFFFFF).getRGB(), TCsPitTools.config_event_dropShadow);
                         y += mc.fontRendererObj.FONT_HEIGHT + margin;
                     }
                     else {
@@ -116,14 +131,14 @@ public class PitEventHUD {
                                     Color color = event.getColor();
                                     int colorRGB = new Color(color.getRed(), color.getGreen(), color.getBlue(), 102).getRGB();
                                     Gui.drawRect(
-                                            showX - 1,
+                                            startX - 1,
                                             y - 1,
                                             hudX + textBoxWidth + 1,
                                             y + mc.fontRendererObj.FONT_HEIGHT,
                                             colorRGB
                                     );
                                 }
-                                mc.fontRendererObj.drawString(showString, (float) showX, (float) y, astolfoColorsDraw(10, del, 2900F), TCsPitTools.config_event_dropShadow);
+                                mc.fontRendererObj.drawString(showString, (float) startX, (float) y, astolfoColorsDraw(10, del, 2900F), TCsPitTools.config_event_dropShadow);
                                 y += mc.fontRendererObj.FONT_HEIGHT + margin;
                                 del -= 120;
                                 break;
@@ -132,13 +147,13 @@ public class PitEventHUD {
                                 Color color = event.getColor();
                                 int colorRGB = new Color(color.getRed(), color.getGreen(), color.getBlue(), 102).getRGB();
                                 Gui.drawRect(
-                                        showX - 1,
+                                        startX - 1,
                                         y - 1,
                                         hudX + textBoxWidth + 1,
                                         y + mc.fontRendererObj.FONT_HEIGHT,
                                         colorRGB
                                 );
-                                mc.fontRendererObj.drawString(showString, (float) showX, (float) y, 0xFFFFFF, TCsPitTools.config_event_dropShadow);
+                                mc.fontRendererObj.drawString(showString, (float) startX, (float) y, 0xFFFFFF, TCsPitTools.config_event_dropShadow);
                                 y += mc.fontRendererObj.FONT_HEIGHT + margin;
 
                                 break;
@@ -148,14 +163,14 @@ public class PitEventHUD {
                                 int colorRGB = new Color(color.getRed(), color.getGreen(), color.getBlue(), 110).getRGB();
                                 if (event.getType().equals("major")) {
                                     Gui.drawRect(
-                                            showX - 1,
+                                            startX - 1,
                                             y - 1,
                                             hudX + textBoxWidth + 1,
                                             y + mc.fontRendererObj.FONT_HEIGHT,
                                             new Color(0x4DFFFFFF, true).getRGB()
                                     );
                                 }
-                                mc.fontRendererObj.drawString(showString, (float) showX, (float) y, colorRGB, TCsPitTools.config_event_dropShadow);
+                                mc.fontRendererObj.drawString(showString, (float) startX, (float) y, colorRGB, TCsPitTools.config_event_dropShadow);
                                 y += mc.fontRendererObj.FONT_HEIGHT + margin;
 
                                 break;
@@ -171,15 +186,25 @@ public class PitEventHUD {
                 case DOWNLEFT: {
                     String showString = calculateCountdown(event.getTimestamp(), currentTimestamp) + " - " + event.getEvent();
 
-                    if (event.getTimestamp() - currentTimestamp < 60000) {
+                    //last60s
+                    if (lastTime < 60000) {
                         Color color = event.getColor();
                         int colorRGB = new Color(color.getRed(), color.getGreen(), color.getBlue(), loopColorAlpha(currentTimestamp)).getRGB();
+                        int endX = hudX + mc.fontRendererObj.getStringWidth(showString);
                         Gui.drawRect(
                                 hudX - 1,
                                 y - 1,
-                                hudX + mc.fontRendererObj.getStringWidth(showString) + 1,
+                                endX + 1,
                                 y + mc.fontRendererObj.FONT_HEIGHT,
                                 colorRGB
+                        );
+                        int distance = endX - hudX;
+                        drawRectDouble(
+                                hudX - 1,
+                                y + mc.fontRendererObj.FONT_HEIGHT - 1,
+                                endX - (distance - (distance * ((double)lastTime/(double)60000))),
+                                y + mc.fontRendererObj.FONT_HEIGHT,
+                                0xFFFFFFFF
                         );
                         mc.fontRendererObj.drawString(showString, (float) hudX, (float) y, new Color(0xffffff).getRGB(), TCsPitTools.config_event_dropShadow);
                         y += mc.fontRendererObj.FONT_HEIGHT + margin;
@@ -330,7 +355,41 @@ public class PitEventHUD {
         hue += 0.5F;
         return Color.HSBtoRGB(hue, 0.5f, 1F);
     }
+    public static void drawRectDouble(double left, double top, double right, double bottom, int color)
+    {
+        if (left < right)
+        {
+            double i = left;
+            left = right;
+            right = i;
+        }
 
+        if (top < bottom)
+        {
+            double j = top;
+            top = bottom;
+            bottom = j;
+        }
+
+        float f3 = (float)(color >> 24 & 255) / 255.0F;
+        float f = (float)(color >> 16 & 255) / 255.0F;
+        float f1 = (float)(color >> 8 & 255) / 255.0F;
+        float f2 = (float)(color & 255) / 255.0F;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        GlStateManager.enableBlend();
+        GlStateManager.disableTexture2D();
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.color(f, f1, f2, f3);
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION);
+        worldrenderer.pos(left, bottom, 0.0D).endVertex();
+        worldrenderer.pos(right, bottom, 0.0D).endVertex();
+        worldrenderer.pos(right, top, 0.0D).endVertex();
+        worldrenderer.pos(left, top, 0.0D).endVertex();
+        tessellator.draw();
+        GlStateManager.enableTexture2D();
+        GlStateManager.disableBlend();
+    }
 
 
     public enum PositionMode {
