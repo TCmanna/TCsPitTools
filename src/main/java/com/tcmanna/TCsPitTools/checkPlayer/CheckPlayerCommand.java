@@ -3,6 +3,7 @@ package com.tcmanna.TCsPitTools.checkPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -61,7 +62,7 @@ public class CheckPlayerCommand  extends CommandBase {
                 return;
             }
         }
-        sender.addChatMessage(new ChatComponentText("未找到玩家"));
+        sender.addChatMessage(new ChatComponentText(I18n.format("tcpt.command.notfound")));
 
     }
     @Override

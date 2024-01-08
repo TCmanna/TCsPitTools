@@ -2,13 +2,13 @@ package com.tcmanna.TCsPitTools;
 
 import com.tcmanna.TCsPitTools.checkPlayer.CheckPlayerCommand;
 import com.tcmanna.TCsPitTools.checkPlayer.ClientEvent;
+import com.tcmanna.TCsPitTools.config.NumberSliderConfiguration;
 import com.tcmanna.TCsPitTools.getGold.GetGoldCommand;
 import com.tcmanna.TCsPitTools.mysticColor.AddTooltips;
 import com.tcmanna.TCsPitTools.config.GuiConfigCommand;
 import com.tcmanna.TCsPitTools.config.ConfigAboutListener;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -23,7 +23,7 @@ public class ClientProxy extends CommonProxy {
         MinecraftForge.EVENT_BUS.register(new AddTooltips());
         MinecraftForge.EVENT_BUS.register(new ConfigAboutListener());
         MinecraftForge.EVENT_BUS.register(new ClientEvent());
-        TCsPitTools.configFile = new Configuration(e.getSuggestedConfigurationFile());
+        TCsPitTools.configFile = new NumberSliderConfiguration(e.getSuggestedConfigurationFile());
         TCsPitTools.configFile.load();
         TCsPitTools.syncConfig();
     }

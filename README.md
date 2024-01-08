@@ -23,7 +23,7 @@ TCmanna's Pit Tools
 
 ## 特点
 
-* 使用国内仓库同步事件列表 进行事件查询 有效解决brookeafk API无法连接的问题
+* 使用国内仓库同步事件列表 进行事件查询 有效解决brookeafk API无法连接的问题  
   特别感谢 https://github.com/BrookeAFK/brookeafk-api  
   国内仓库地址 https://gitee.com/tcmanna/brookeafk-api
 

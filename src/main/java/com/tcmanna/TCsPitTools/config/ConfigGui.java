@@ -1,8 +1,6 @@
 package com.tcmanna.TCsPitTools.config;
 
-import com.tcmanna.TCsPitTools.inGameEvent.PitEventHUD;
 import com.tcmanna.TCsPitTools.TCsPitTools;
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.common.config.ConfigCategory;
@@ -40,25 +38,5 @@ public class ConfigGui extends GuiConfig {
 
         return list;
     }
-
-    GuiButton editEventPos;
-
-    @Override
-    public void initGui() {
-        super.initGui();
-        editEventPos = new GuiButton(0, this.width / 2 - 100, this.height / 2 - 10, I18n.format("tcpt.button.editpos"));
-        this.buttonList.add(editEventPos);
-
-    }
-
-    @Override
-    protected void actionPerformed(GuiButton button) {
-        if (button == editEventPos) {
-            mc.displayGuiScreen(new PitEventHUD.EditHudPositionScreen());
-        } else {
-            super.actionPerformed(button);
-        }
-    }
-
 
 }
