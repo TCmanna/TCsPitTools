@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class TCsPitTools
 {
 	public static final String MODID = "tcs_pittools";
-    public static final String VERSION = "1.2";
+    public static final String VERSION = "1.2.2";
     public static final String NAME = "TCsPitTools";
     public static final String Versions = "[1.8.9]";
 
