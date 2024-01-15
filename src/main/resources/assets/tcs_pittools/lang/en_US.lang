@@ -38,3 +38,7 @@ tcpt.tooltips.press=Press
 tcpt.tooltips.showmore=key to show more
 
 tcpt.command.notfound=Not found player
+
+tcpt.key.respawn=Click Respawn
+tcpt.key.oof=Click oof
+tcpt.key.opencfg=Open Config Gui

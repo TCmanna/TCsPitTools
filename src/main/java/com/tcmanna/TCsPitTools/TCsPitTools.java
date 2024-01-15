@@ -1,6 +1,7 @@
 package com.tcmanna.TCsPitTools;
 
 import com.tcmanna.TCsPitTools.config.NumberSliderConfiguration;
+import com.tcmanna.TCsPitTools.hotkey.HotkeyManager;
 import com.tcmanna.TCsPitTools.inGameEvent.PitEventHUD;
 import com.tcmanna.TCsPitTools.inGameEvent.PitEventManager;
 import net.minecraftforge.common.config.Property;
@@ -34,6 +35,7 @@ public class TCsPitTools
 
     public static PitEventManager pitEventManager;
     public static PitEventHUD pitEventHUD;
+    public static HotkeyManager hotkeyManager;
 
     public static boolean enableConfigGui = false;
     public static NumberSliderConfiguration configFile;
@@ -41,8 +43,6 @@ public class TCsPitTools
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        pitEventManager = new PitEventManager();
-        pitEventHUD = new PitEventHUD();
         proxy.preInit(event);
     }
 

@@ -38,3 +38,7 @@ tcpt.tooltips.press=按下
 tcpt.tooltips.showmore=键显示更多
 
 tcpt.command.notfound=未找到玩家
+
+tcpt.key.respawn=一键respawn
+tcpt.key.oof=一键oof
+tcpt.key.opencfg=打开配置GUI
