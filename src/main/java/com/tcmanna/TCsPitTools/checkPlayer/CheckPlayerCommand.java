@@ -90,17 +90,26 @@ public class CheckPlayerCommand  extends CommandBase {
 
     public static class GuiCheckPlayerInv extends GuiContainer {
         static IInventory checkInventory;
+        static EntityPlayer thePlayer;
 
         private final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
         private final int inventoryRows;
 
         public GuiCheckPlayerInv(EntityPlayer player, IInventory checkInv) {
             super(new ContainerEmptyBox(player, checkInv));
+            thePlayer = player;
             checkInventory = checkInv;
             int i = 222;
             int j = i - 108;
             this.inventoryRows = checkInventory.getSizeInventory() / 9;
             this.ySize = j + this.inventoryRows * 18;
+        }
+
+        @Override
+        protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+        {
+            this.fontRendererObj.drawString(checkInventory.getDisplayName().getUnformattedText(), 8, 6, 4210752);
+            this.fontRendererObj.drawString(thePlayer.inventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
         }
 
         @Override
