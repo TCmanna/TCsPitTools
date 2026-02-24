@@ -32,13 +32,11 @@ tcpt.button.resetpos=Reset Position
 tcpt.button.confirm=Confirm Save
 
 tcpt.tooltips.nonce=Nonce
-tcpt.tooltips.requires= Requires
-tcpt.tooltips.pants=Pants
-tcpt.tooltips.press=Press
-tcpt.tooltips.showmore=key to show more
+tcpt.tooltips.requires=§7Requires {{string}} §7pants to T3
+tcpt.tooltips.showmore=§7Press [§f{{string}}§7] key to show more
 
 tcpt.command.notfound=Not found player
 
-tcpt.key.respawn=Click Respawn
-tcpt.key.oof=Click oof
+tcpt.key.respawn=Respawn Hotkey
+tcpt.key.oof=oof Hotkey
 tcpt.key.opencfg=Open Config Gui

@@ -31,11 +31,9 @@ tcpt.gold.ignore.tooltip=设置忽略P0此等级以下的玩家。
 tcpt.button.resetpos=重置位置
 tcpt.button.confirm=确认保存
 
-tcpt.tooltips.nonce=唯一码
-tcpt.tooltips.requires=需要
-tcpt.tooltips.pants=裤子
-tcpt.tooltips.press=按下
-tcpt.tooltips.showmore=键显示更多
+tcpt.tooltips.nonce=Nonce
+tcpt.tooltips.requires=§7T3需要 {{string}} §7裤子
+tcpt.tooltips.showmore=§7按下[§f{{string}}]§7键以显示更多
 
 tcpt.command.notfound=未找到玩家
 

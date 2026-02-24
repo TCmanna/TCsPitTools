@@ -1,6 +1,6 @@
 package com.tcmanna.TCsPitTools.getGold;
 
-import com.tcmanna.TCsPitTools.TCsPitTools;
+import com.tcmanna.TCsPitTools.config.ConfigManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiIngameMenu;
@@ -70,9 +70,9 @@ public class GetGoldCommand extends CommandBase {
                         String name = playerEntity.getName();
                         Minecraft.getMinecraft().thePlayer.sendChatMessage("/view " + name);
                         i++;
-                        if (i % TCsPitTools.config_gold_ci == 0) {
-                            Thread.sleep(TCsPitTools.config_gold_ciDelay);
-                        } else Thread.sleep(TCsPitTools.config_gold_daDelay);
+                        if (i % ConfigManager.config_gold_ci.getInt() == 0) {
+                            Thread.sleep(ConfigManager.config_gold_ciDelay.getInt());
+                        } else Thread.sleep(ConfigManager.config_gold_daDelay.getInt());
                     }
                 }
 
@@ -118,7 +118,7 @@ public class GetGoldCommand extends CommandBase {
             String subLevel = cleanedName.substring(cleanedName.indexOf("[") + 1, cleanedName.indexOf("]"));
 
             int disLevel = Integer.parseInt(subLevel);
-            if(disLevel < TCsPitTools.config_gold_ignoreLev) {
+            if(disLevel < ConfigManager.config_gold_ignoreLev.getInt()) {
                 ignorePlayer++;
                 return true;
             }

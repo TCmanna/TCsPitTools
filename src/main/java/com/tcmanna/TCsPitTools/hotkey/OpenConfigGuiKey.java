@@ -1,7 +1,6 @@
 package com.tcmanna.TCsPitTools.hotkey;
 
 import com.tcmanna.TCsPitTools.config.ConfigGui;
-import org.lwjgl.input.Keyboard;
 
 public class OpenConfigGuiKey extends KeyBase {
 

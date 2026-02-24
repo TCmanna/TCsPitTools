@@ -1,11 +1,11 @@
 buildscript {
     repositories {
-        mavenLocal()
-        mavenCentral()
         maven {
             name = "forge"
-            url = "https://maven.fastmirror.net/"
+            url = "http://files.minecraftforge.net/maven"
         }
+        mavenLocal()
+        mavenCentral()
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
@@ -16,7 +16,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "1.2.2"
+version = project.version
 group= "com.tcmanna.TCsPitTools"
 archivesBaseName = "TCsPitTools"
 
