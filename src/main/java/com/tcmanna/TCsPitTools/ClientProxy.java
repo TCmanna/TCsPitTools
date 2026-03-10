@@ -1,12 +1,13 @@
 package com.tcmanna.TCsPitTools;
 
-import com.tcmanna.TCsPitTools.checkPlayer.CheckPlayerCommand;
-import com.tcmanna.TCsPitTools.checkPlayer.ClientEvent;
-import com.tcmanna.TCsPitTools.getGold.GetGoldCommand;
+import com.tcmanna.TCsPitTools.feature.ChatTipsReplace;
+import com.tcmanna.TCsPitTools.feature.checkPlayer.CheckPlayerCommand;
+import com.tcmanna.TCsPitTools.feature.checkPlayer.ClientEvent;
+import com.tcmanna.TCsPitTools.feature.getGold.GetGoldCommand;
 import com.tcmanna.TCsPitTools.hotkey.HotkeyManager;
-import com.tcmanna.TCsPitTools.inGameEvent.PitEventHUD;
-import com.tcmanna.TCsPitTools.inGameEvent.PitEventManager;
-import com.tcmanna.TCsPitTools.mysticColor.AddTooltips;
+import com.tcmanna.TCsPitTools.feature.inGameEvent.PitEventHUD;
+import com.tcmanna.TCsPitTools.feature.inGameEvent.PitEventManager;
+import com.tcmanna.TCsPitTools.feature.TierColorTooltips;
 import com.tcmanna.TCsPitTools.config.GuiConfigCommand;
 import com.tcmanna.TCsPitTools.config.ConfigManager;
 import net.minecraft.client.Minecraft;
@@ -32,8 +33,9 @@ public class ClientProxy extends CommonProxy {
 
         MinecraftForge.EVENT_BUS.register(TCsPitTools.configManager);
         MinecraftForge.EVENT_BUS.register(TCsPitTools.hotkeyManager);
-        MinecraftForge.EVENT_BUS.register(new AddTooltips());
+        MinecraftForge.EVENT_BUS.register(new TierColorTooltips());
         MinecraftForge.EVENT_BUS.register(new ClientEvent());
+        MinecraftForge.EVENT_BUS.register(new ChatTipsReplace());
     }
 
     public void init(FMLInitializationEvent e) {

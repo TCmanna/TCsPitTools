@@ -1,4 +1,4 @@
-package com.tcmanna.TCsPitTools.checkPlayer;
+package com.tcmanna.TCsPitTools.feature.checkPlayer;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;

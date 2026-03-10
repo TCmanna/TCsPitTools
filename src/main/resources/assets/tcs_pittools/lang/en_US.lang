@@ -28,6 +28,12 @@ tcpt.gold.cidelay.tooltip=Setting the delay between rounds.
 tcpt.gold.dadelay.tooltip=Setting the single interval delay.
 tcpt.gold.ignore.tooltip=Set to ignore P0 players below this level.
 
+tcpt.t3color.enable=Enable Request Color
+tcpt.chattips.enable=Enable Replace ChatTips
+
+tcpt.t3color.enable.tooltip=Show the pants color required to upgrade mystic items to Tier 3.
+tcpt.chattips.enable.tooltip=Replace the click command in player chat messages with /view and remove the /pickupstash click command.
+
 tcpt.button.resetpos=Reset Position
 tcpt.button.confirm=Confirm Save
 

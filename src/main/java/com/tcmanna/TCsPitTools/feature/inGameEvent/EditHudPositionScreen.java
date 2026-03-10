@@ -1,4 +1,4 @@
-package com.tcmanna.TCsPitTools.inGameEvent;
+package com.tcmanna.TCsPitTools.feature.inGameEvent;
 
 import com.tcmanna.TCsPitTools.config.ConfigManager;
 import net.minecraft.client.gui.FontRenderer;

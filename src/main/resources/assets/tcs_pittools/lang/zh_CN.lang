@@ -28,6 +28,13 @@ tcpt.gold.cidelay.tooltip=设置每轮查询之间的间隔延迟。
 tcpt.gold.dadelay.tooltip=设置每个玩家查询之间的延迟。
 tcpt.gold.ignore.tooltip=设置忽略P0此等级以下的玩家。
 
+tcpt.t3color.enable=启用T3颜色展示
+tcpt.chattips.enable=启用点击命令替换
+
+tcpt.t3color.enable.tooltip=显示神秘物品升级tier 3时所需的裤子颜色。
+tcpt.chattips.enable.tooltip=替换玩家聊天信息的点击命令为view命令，取消pickupstash的点击命令。
+
+
 tcpt.button.resetpos=重置位置
 tcpt.button.confirm=确认保存
 

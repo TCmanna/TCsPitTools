@@ -1,4 +1,4 @@
-package com.tcmanna.TCsPitTools.inGameEvent;
+package com.tcmanna.TCsPitTools.feature.inGameEvent;
 
 import com.google.gson.annotations.SerializedName;
 import net.minecraft.item.ItemStack;

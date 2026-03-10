@@ -1,8 +1,8 @@
 package com.tcmanna.TCsPitTools.config;
 
 import com.tcmanna.TCsPitTools.TCsPitTools;
-import com.tcmanna.TCsPitTools.inGameEvent.EditHudPositionScreen;
-import com.tcmanna.TCsPitTools.inGameEvent.PitEventHUD;
+import com.tcmanna.TCsPitTools.feature.inGameEvent.EditHudPositionScreen;
+import com.tcmanna.TCsPitTools.feature.inGameEvent.PitEventHUD;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
@@ -21,6 +21,7 @@ import static com.tcmanna.TCsPitTools.TCsPitTools.configFile;
 
 public class ConfigManager {
     public static Property config_tierColor_enable;
+    public static Property config_chatTips_enable;
 
     //event
     public static Property config_event_enable;
@@ -66,7 +67,7 @@ public class ConfigManager {
 
         eventShowConfig();
         getGoldConfig();
-        addTooltipsConfig();
+        generalConfig();
 
         if (configFile.hasChanged()) {
             configFile.save();
@@ -148,10 +149,14 @@ public class ConfigManager {
         goldConfigCategory.keySet().removeIf(key -> goldConfigList.stream().noneMatch(property -> property.getName().equals(key)));
     }
 
-    private static void addTooltipsConfig() {
+    private static void generalConfig() {
         config_tierColor_enable = configFile.get("general", "MysticColorShow", true, null);
         config_tierColor_enable.setLanguageKey("tcpt.t3color.enable");
         generalList.add(config_tierColor_enable);
+
+        config_chatTips_enable = configFile.get("general", "ReplaceChatTips", true, null);
+        config_chatTips_enable.setLanguageKey("tcpt.chattips.enable");
+        generalList.add(config_chatTips_enable);
 
         generalCategory.keySet().removeIf(key -> generalList.stream().noneMatch(property -> property.getName().equals(key)));
     }

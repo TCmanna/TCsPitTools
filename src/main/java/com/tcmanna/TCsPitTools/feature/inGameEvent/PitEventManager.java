@@ -1,4 +1,4 @@
-package com.tcmanna.TCsPitTools.inGameEvent;
+package com.tcmanna.TCsPitTools.feature.inGameEvent;
 
 import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;

@@ -2,8 +2,8 @@ package com.tcmanna.TCsPitTools;
 
 import com.tcmanna.TCsPitTools.config.ConfigManager;
 import com.tcmanna.TCsPitTools.hotkey.HotkeyManager;
-import com.tcmanna.TCsPitTools.inGameEvent.PitEventHUD;
-import com.tcmanna.TCsPitTools.inGameEvent.PitEventManager;
+import com.tcmanna.TCsPitTools.feature.inGameEvent.PitEventHUD;
+import com.tcmanna.TCsPitTools.feature.inGameEvent.PitEventManager;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;

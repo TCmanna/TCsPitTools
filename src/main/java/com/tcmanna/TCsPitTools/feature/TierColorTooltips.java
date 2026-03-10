@@ -1,4 +1,4 @@
-package com.tcmanna.TCsPitTools.mysticColor;
+package com.tcmanna.TCsPitTools.feature;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import com.tcmanna.TCsPitTools.config.ConfigManager;
@@ -11,7 +11,7 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
 
-public class AddTooltips {
+public class TierColorTooltips {
     @SubscribeEvent
     public void onTooltipsShow(ItemTooltipEvent event) {
         if (!ConfigManager.config_tierColor_enable.getBoolean()) return;

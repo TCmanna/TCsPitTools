@@ -1,4 +1,4 @@
-package com.tcmanna.TCsPitTools.getGold;
+package com.tcmanna.TCsPitTools.feature.getGold;
 
 import com.tcmanna.TCsPitTools.config.ConfigManager;
 import net.minecraft.client.Minecraft;
